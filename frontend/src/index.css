@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rektelier-black: #000000;
+  --color-rektelier-white: #ffffff;
+  --color-rektelier-muted: #7e7e7e;
+  --color-rektelier-border: #aaaaaa;
+  --color-rektelier-divider: #f0f0f0;
+
+  --font-sans: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+  --animate-shimmer: shimmer 1.5s linear infinite;
+  --animate-fadeInUp: fadeInUp 0.6s ease-out;
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: var(--color-rektelier-black);
+  background-color: var(--color-rektelier-white);
+}
