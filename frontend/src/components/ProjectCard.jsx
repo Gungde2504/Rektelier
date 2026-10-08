@@ -6,7 +6,7 @@ function isVideoUrl(url) {
   return /\.(mp4|webm)$/i.test(url || '');
 }
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, priority = false }) {
   const src = project.cover_image ? `${ASSET_BASE}${project.cover_image}` : '';
   const isVideo = isVideoUrl(project.cover_image);
 
@@ -19,12 +19,16 @@ export default function ProjectCard({ project }) {
           muted
           loop
           playsInline
+          preload={priority ? 'auto' : 'metadata'}
           className="w-full h-full object-cover block"
         />
       ) : (
         <img
           src={src}
           alt={project.title}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
+          decoding="async"
           className="w-full h-full object-cover block"
         />
       )}

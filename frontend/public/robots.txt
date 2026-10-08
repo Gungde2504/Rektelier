@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /submit-project
+
+Sitemap: https://GANTI-DOMAIN-KAMU.com/sitemap.xml

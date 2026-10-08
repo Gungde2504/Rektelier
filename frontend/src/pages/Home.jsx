@@ -15,13 +15,14 @@ export default function Home() {
 
   return (
     <div className="pt-24 md:pt-20 pb-16 animate-fadeInUp">
+      <h1 className="sr-only">Rektelier — Studio Arsitektur</h1>
       {!loading && projects.length === 0 && (
         <p className="text-center text-rektelier-muted py-20">Belum ada proyek yang tayang.</p>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[320px] sm:auto-rows-[220px] lg:auto-rows-[260px] gap-4 px-4 md:px-6">
         {projects.map((p, i) => (
           <div key={p.id} className={i % 5 === 2 ? 'sm:row-span-2' : ''}>
-            <ProjectCard project={p} />
+            <ProjectCard project={p} priority={i < 3} />
           </div>
         ))}
       </div>
