@@ -168,8 +168,8 @@ export default function AdminTeam() {
             className="flex items-center gap-4 border border-rektelier-border rounded-lg p-3 hover:border-rektelier-black/30 transition-colors"
           >
             <div className="w-12 h-12 shrink-0 bg-gray-100 rounded-full overflow-hidden">
-              {t.photo && (
-                <img src={`${ASSET_BASE}${t.photo}`} alt={t.name} className="w-full h-full object-cover" />
+              {t.photo_url && (
+                <img src={`${ASSET_BASE}${t.photo_url}`} alt={t.name} className="w-full h-full object-cover" />
               )}
             </div>
             <div className="flex-1 min-w-0">

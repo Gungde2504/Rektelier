@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import client from '../api/client';
 
 const ASSET_BASE = (import.meta.env.VITE_API_URL || '').replace('/api', '');
@@ -31,6 +31,15 @@ function EmailIcon() {
   );
 }
 
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
+      <path d="M3 21l1.65-4.8A8.5 8.5 0 1 1 8 19.4L3 21z" strokeLinejoin="round" />
+      <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-.8-.4-1.9-1.5-2.3-2.3l.8-1-1-2L9 8.5z" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function AboutHeaderSlider() {
   const [index, setIndex] = useState(0);
 
@@ -47,7 +56,10 @@ function AboutHeaderSlider() {
         <img
           key={src}
           src={src}
-          alt=""
+          alt={`Rektelier studio ${i + 1}`}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          fetchPriority={i === 0 ? 'high' : 'auto'}
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover transition-opacity ease-in-out"
           style={{
             opacity: i === index ? 1 : 0,
@@ -84,6 +96,7 @@ export default function About() {
 
   return (
     <div className="pt-16 md:pt-20 pb-16 animate-fadeInUp">
+      <h1 className="sr-only">Tentang Rektelier</h1>
       <AboutHeaderSlider />
 
       <div className="px-6 max-w-6xl mx-auto pt-12">
@@ -110,13 +123,17 @@ export default function About() {
         <div className="mb-16 text-sm">
           <h2 className="font-bold uppercase mb-3">Social Media</h2>
           <div className="flex gap-6">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
               <InstagramIcon />
               Instagram
             </a>
             <a href="mailto:hello@rektelier.com" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
               <EmailIcon />
               Email
+            </a>
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
+              <WhatsAppIcon />
+              WhatsApp
             </a>
           </div>
         </div>
@@ -130,6 +147,8 @@ export default function About() {
                   <img
                     src={`${ASSET_BASE}${member.photo_url}`}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover object-top"
                   />
                 )}
