@@ -115,23 +115,23 @@ export default function About() {
           <h2 className="font-bold uppercase mb-3">Contact</h2>
           <p className="text-rektelier-muted mb-4">Indonesia</p>
           <p className="mb-1">Business inquiry</p>
-          <p className="text-rektelier-muted mb-4">hello@rektelier.com</p>
+          <p className="text-rektelier-muted mb-4">rektearchitects@gmail.com</p>
           <p className="mb-1">Press / Job / Internship</p>
-          <p className="text-rektelier-muted">info@rektelier.com</p>
+          <p className="text-rektelier-muted">rektearchitects@gmail.com</p>
         </div>
 
         <div className="mb-16 text-sm">
           <h2 className="font-bold uppercase mb-3">Social Media</h2>
           <div className="flex gap-6">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
+            <a href="https://www.instagram.com/rektelier" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
               <InstagramIcon />
               Instagram
             </a>
-            <a href="mailto:hello@rektelier.com" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
+            <a href="mailto:rektearchitects@gmail.com" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
               <EmailIcon />
               Email
             </a>
-            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
+            <a href="https://wa.me/6281338153289" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-rektelier-muted transition-colors">
               <WhatsAppIcon />
               WhatsApp
             </a>
