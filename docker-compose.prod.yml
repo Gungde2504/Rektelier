@@ -51,8 +51,24 @@ services:
         VITE_SITE_URL: ${SITE_URL}
     restart: unless-stopped
     depends_on: [backend]
+    expose:
+      - "80"
+    networks: [rektelier_net]
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on: [frontend]
     ports:
       - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN}
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
     networks: [rektelier_net]
 
 networks:
@@ -62,3 +78,5 @@ networks:
 volumes:
   mysql_data:
   uploads_data:
+  caddy_data:
+  caddy_config:

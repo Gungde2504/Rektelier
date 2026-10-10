@@ -14,6 +14,7 @@ const teamRoutes = require('./routes/team.routes');
 const newsRoutes = require('./routes/news.routes');
 const adminNewsRoutes = require('./routes/admin.news.routes');
 const seoRoutes = require('./routes/seo.routes');
+const aboutImagesRoutes = require('./routes/aboutImages.routes');
 const errorHandler = require('./middleware/errorHandler');
 const pool = require('./config/db');
 
@@ -62,6 +63,7 @@ app.use('/api/categories', categoriesRoutes);
 app.use('/api/team', teamRoutes);
 app.use('/api/news', newsRoutes);
 app.use('/api/admin/news', adminNewsRoutes);
+app.use('/api/about-images', aboutImagesRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint tidak ditemukan' });

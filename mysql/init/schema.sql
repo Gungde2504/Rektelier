@@ -68,6 +68,13 @@ CREATE TABLE IF NOT EXISTS news (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS about_images (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  image_url VARCHAR(500) NOT NULL,
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Index untuk query yang paling sering dipakai
 CREATE INDEX idx_projects_status_sort ON projects (status, sort_order, created_at);
 CREATE INDEX idx_news_status_date ON news (status, news_date);

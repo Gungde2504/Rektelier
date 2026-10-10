@@ -92,6 +92,7 @@ export default function AdminDashboard() {
           <Link to="/admin/news" className="text-rektelier-muted hover:text-rektelier-black transition-colors">News</Link>
           <Link to="/admin/categories" className="text-rektelier-muted hover:text-rektelier-black transition-colors">Kategori</Link>
           <Link to="/admin/team" className="text-rektelier-muted hover:text-rektelier-black transition-colors">Tim</Link>
+          <Link to="/admin/about-images" className="text-rektelier-muted hover:text-rektelier-black transition-colors">Hero About</Link>
           <button onClick={logout} className="text-red-700 hover:text-red-900 transition-colors">Logout</button>
         </div>
       </div>

@@ -40,19 +40,22 @@ function WhatsAppIcon() {
   );
 }
 
-function AboutHeaderSlider() {
+function AboutHeaderSlider({ images }) {
   const [index, setIndex] = useState(0);
+  const count = images.length;
 
   useEffect(() => {
+    setIndex(0);
+    if (count < 2) return undefined;
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % ABOUT_HEADER_IMAGES.length);
+      setIndex((prev) => (prev + 1) % count);
     }, SLIDE_INTERVAL);
     return () => clearInterval(timer);
-  }, []);
+  }, [count]);
 
   return (
     <div className="relative w-full h-[50vh] md:h-[85vh] overflow-hidden bg-rektelier-black">
-      {ABOUT_HEADER_IMAGES.map((src, i) => (
+      {images.map((src, i) => (
         <img
           key={src}
           src={src}
@@ -67,28 +70,38 @@ function AboutHeaderSlider() {
           }}
         />
       ))}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2">
-        {ABOUT_HEADER_IMAGES.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setIndex(i)}
-            aria-label={`Gambar ${i + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === index ? 'w-8 bg-white opacity-100' : 'w-1.5 bg-white opacity-50'
-            }`}
-          />
-        ))}
-      </div>
+      {count > 1 && (
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={`Gambar ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === index ? 'w-8 bg-white opacity-100' : 'w-1.5 bg-white opacity-50'
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
 export default function About() {
   const [team, setTeam] = useState([]);
+  const [heroImages, setHeroImages] = useState(null);
 
   useEffect(() => {
     client.get('/team').then((res) => setTeam(res.data)).catch(() => {});
+    client
+      .get('/about-images')
+      .then((res) => {
+        const urls = res.data.map((img) => `${ASSET_BASE}${img.image_url}`);
+        setHeroImages(urls.length > 0 ? urls : ABOUT_HEADER_IMAGES);
+      })
+      .catch(() => setHeroImages(ABOUT_HEADER_IMAGES));
   }, []);
 
   const active = team.filter((m) => !m.is_former);
@@ -97,7 +110,7 @@ export default function About() {
   return (
     <div className="pt-16 md:pt-20 pb-16 animate-fadeInUp">
       <h1 className="sr-only">Tentang Rektelier</h1>
-      <AboutHeaderSlider />
+      <AboutHeaderSlider images={heroImages || []} />
 
       <div className="px-6 max-w-6xl mx-auto pt-12">
         <div className="max-w-2xl mb-12">

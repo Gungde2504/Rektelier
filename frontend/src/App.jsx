@@ -21,6 +21,7 @@ const AdminTeam = lazy(() => import('./pages/admin/AdminTeam'));
 const AdminNews = lazy(() => import('./pages/admin/AdminNews'));
 const AdminProjectEdit = lazy(() => import('./pages/admin/AdminProjectEdit'));
 const AdminNewsEdit = lazy(() => import('./pages/admin/AdminNewsEdit'));
+const AdminAboutImages = lazy(() => import('./pages/admin/AdminAboutImages'));
 
 const orgJsonLd = {
   '@context': 'https://schema.org',
@@ -126,6 +127,7 @@ export default function App() {
                 <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
                 <Route path="/admin/categories" element={<ProtectedRoute><AdminCategories /></ProtectedRoute>} />
                 <Route path="/admin/team" element={<ProtectedRoute><AdminTeam /></ProtectedRoute>} />
+                <Route path="/admin/about-images" element={<ProtectedRoute><AdminAboutImages /></ProtectedRoute>} />
                 <Route path="/admin/news" element={<ProtectedRoute><AdminNews /></ProtectedRoute>} />
                 <Route path="/admin/projects/:id/edit" element={<ProtectedRoute><AdminProjectEdit /></ProtectedRoute>} />
                 <Route path="/admin/news/:id/edit" element={<ProtectedRoute><AdminNewsEdit /></ProtectedRoute>} />
